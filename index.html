@@ -110,9 +110,11 @@ const data = [
     { timestamp: "2/18/2025 8:22:08", name: "Santosh Bhandari", phone: "8970399231", checkInType: "Log-in attendance - Before 7:30 AM", imageLink: "https://drive.google.com/open?id=1HBOwTotTvrmMMwKuJZTr9aJvNyzpx1Y4" },
     { timestamp: "2/18/2025 12:59:29", name: "Abhijna", phone: "8277276036", checkInType: "Mid-day attendance - By 12:30 PM", imageLink: "https://drive.google.com/open?id=1MfuYJ4LlBradUydXeov7J3DBQ7Sztvx7" },
     { timestamp: "2/18/2025 13:00:58", name: "Santosh Bhandari", phone: "8970399231", checkInType: "Mid-day attendance - By 12:30 PM", imageLink: "https://drive.google.com/open?id=1u2-MCm299c4Ohm5z5mBRftAZJZ7ZqFlu" },
-    { timestamp: "2/18/2025 13:01:50", name: "Shwetha S", phone: "8050154065", checkInType: "Mid-day attendance - By 12:30 PM", imageLink: "https://drive.google.com/open?id=1lE3CSGcThz7xiBqvFfq9CGYI5iNTC90v" }
+    { timestamp: "2/18/2025 13:01:50", name: "Shwetha S", phone: "8050154065", checkInType: "Mid-day attendance - By 12:30 PM", imageLink: "https://drive.google.com/open?id=1lE3CSGcThz7xiBqvFfq9CGYI5iNTC90v" },
+    { timestamp: "2/18/2025 16:28:06", name: "Abhijna", phone: "8277276036", checkInType: "Log-out attendance - By 5:30 PM", imageLink: "https://drive.google.com/open?id=1HDy1MpDkLffiJa3spNUCN22pemEfmBpn" },
+    { timestamp: "2/18/2025 16:30:11", name: "Santosh Bhandari", phone: "8970399231", checkInType: "Log-out attendance - By 5:30 PM", imageLink: "https://drive.google.com/open?id=1Kdw2gX-8affHvWRoW1RckY_rlq3Ku4gi" },
+    { timestamp: "2/18/2025 17:06:59", name: "Shwetha S", phone: "8050154065", checkInType: "Log-out attendance - By 5:30 PM", imageLink: "https://drive.google.com/open?id=1iZCCUZVHF5nZFQbVwLmffOIVWYJo6L4Z" }
 ];
-
 // Populate the Filter dropdown dynamically with unique names
 const nameFilter = document.getElementById('nameFilter');
 const uniqueNames = [...new Set(data.map(entry => entry.name))];
