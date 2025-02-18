@@ -4,145 +4,129 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Attendance Dashboard</title>
-    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        h1 {
+            text-align: center;
+        }
+        table {
+            width: 100%;
+            margin-top: 30px;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        th {
+            background-color: #f4f4f4;
+        }
+        .pie-chart-container {
+            width: 50%;
+            margin: auto;
+        }
+    </style>
 </head>
 <body>
-    <div class="container">
-        <h1>Attendance Dashboard</h1>
-        <div class="data-table">
-            <table>
-                <thead>
-                    <tr>
-                        <th>Timestamp</th>
-                        <th>Name</th>
-                        <th>Phone Number</th>
-                        <th>Check-In Type</th>
-                        <th>GSP Camera Check-In Image</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>2/17/2025 8:01:55</td>
-                        <td>Abhijna</td>
-                        <td>8277276036</td>
-                        <td>Log-in attendance - Before 7:30 AM</td>
-                        <td><a href="https://drive.google.com/open?id=1G-qy-hZeKqFU9igTX2H9Fbi2RrK2m9ed" target="_blank">View Image</a></td>
-                    </tr>
-                    <tr>
-                        <td>2/17/2025 8:16:00</td>
-                        <td>Santosh Bhandari</td>
-                        <td>8970399231</td>
-                        <td>Log-in attendance - Before 7:30 AM</td>
-                        <td><a href="https://drive.google.com/open?id=1kceZXG0CqzBSz_moxX1GzEXJNb9TIfVR" target="_blank">View Image</a></td>
-                    </tr>
-                    <tr>
-                        <td>2/17/2025 8:16:55</td>
-                        <td>Shwetha S</td>
-                        <td>8050154065</td>
-                        <td>Log-in attendance - Before 7:30 AM</td>
-                        <td><a href="https://drive.google.com/open?id=1HHbZGkDAUBw5N0ltTOBjOxVeJ00pAsQR" target="_blank">View Image</a></td>
-                    </tr>
-                    <tr>
-                        <td>2/17/2025 12:41:25</td>
-                        <td>Abhijna</td>
-                        <td>8277276036</td>
-                        <td>Mid-day attendance - By 12:30 PM</td>
-                        <td><a href="https://drive.google.com/open?id=1p1lL5XgMzYQCDqsMBpIGiHGuQ1hUVP54" target="_blank">View Image</a></td>
-                    </tr>
-                    <tr>
-                        <td>2/17/2025 12:44:20</td>
-                        <td>Santosh bhandari</td>
-                        <td>8973099213</td>
-                        <td>Mid-day attendance - By 12:30 PM</td>
-                        <td><a href="https://drive.google.com/open?id=1CjsO9taNc5F0_bQtM4OvHGcvlFeme5TN" target="_blank">View Image</a></td>
-                    </tr>
-                    <tr>
-                        <td>2/17/2025 12:48:20</td>
-                        <td>Shwetha S</td>
-                        <td>8050154065</td>
-                        <td>Mid-day attendance - By 12:30 PM</td>
-                        <td><a href="https://drive.google.com/open?id=1ncd3uWk4Vwndi3Sarfbbh8QMIv7JCCSe" target="_blank">View Image</a></td>
-                    </tr>
-                    <tr>
-                        <td>2/17/2025 15:28:22</td>
-                        <td>Abhijna</td>
-                        <td>8277276036</td>
-                        <td>Evening attendance - By 3:30 PM</td>
-                        <td><a href="https://drive.google.com/open?id=1xVjz0WtntBrvM5cqMUwQwCPTsklUFSqS" target="_blank">View Image</a></td>
-                    </tr>
-                    <tr>
-                        <td>2/17/2025 15:43:32</td>
-                        <td>Santosh bhandari</td>
-                        <td>8970388213</td>
-                        <td>Evening attendance - By 3:30 PM</td>
-                        <td><a href="https://drive.google.com/open?id=13xFMJvWawov1XdJsZ2z4kVW0uPo9eAy5" target="_blank">View Image</a></td>
-                    </tr>
-                    <tr>
-                        <td>2/17/2025 15:44:39</td>
-                        <td>Shweta Gowda</td>
-                        <td>8050154065</td>
-                        <td>Evening attendance - By 3:30 PM</td>
-                        <td><a href="https://drive.google.com/open?id=1c2koD2l40YzvA68PaoBO6Dd_rWEKza89" target="_blank">View Image</a></td>
-                    </tr>
-                    <tr>
-                        <td>2/17/2025 16:59:21</td>
-                        <td>Abhijna</td>
-                        <td>8277276036</td>
-                        <td>Log-out attendance - By 5:30 PM</td>
-                        <td><a href="https://drive.google.com/open?id=1ftxVzCStOz15o-hsajzbVPIpHZmV4aRh" target="_blank">View Image</a></td>
-                    </tr>
-                    <tr>
-                        <td>2/17/2025 17:02:17</td>
-                        <td>Santosh bhandari</td>
-                        <td>8970399213</td>
-                        <td>Log-out attendance - By 5:30 PM</td>
-                        <td><a href="https://drive.google.com/open?id=1mL6yRDN8cPUYcT6ApGhndJfw7eJ3dMJ7" target="_blank">View Image</a></td>
-                    </tr>
-                    <tr>
-                        <td>2/17/2025 17:03:49</td>
-                        <td>Shweta Gowda</td>
-                        <td>8050154065</td>
-                        <td>Log-out attendance - By 5:30 PM</td>
-                        <td><a href="https://drive.google.com/open?id=1CiHzOdN44jeFhrfcWljlXWaYblqf3B0A" target="_blank">View Image</a></td>
-                    </tr>
-                    <tr>
-                        <td>2/18/2025 7:47:34</td>
-                        <td>Abhijna</td>
-                        <td>8277276036</td>
-                        <td>Log-in attendance - Before 7:30 AM</td>
-                        <td><a href="https://drive.google.com/open?id=1AHagjNlFzhXYTYMh04G-GomUaKAQ7t6B" target="_blank">View Image</a></td>
-                    </tr>
-                    <tr>
-                        <td>2/18/2025 8:22:08</td>
-                        <td>Santosh Bhandari</td>
-                        <td>8970399213</td>
-                        <td>Log-in attendance - Before 7:30 AM</td>
-                        <td><a href="https://drive.google.com/open?id=1HBOwTotTvrmMMwKuJZTr9aJvNyzpx1Y4" target="_blank">View Image</a></td>
-                    </tr>
-                    <tr>
-                        <td>2/18/2025 12:59:29</td>
-                        <td>Abhijna</td>
-                        <td>8277276036</td>
-                        <td>Mid-day attendance - By 12:30 PM</td>
-                        <td><a href="https://drive.google.com/open?id=1MfuYJ4LlBradUydXeov7J3DBQ7Sztvx7" target="_blank">View Image</a></td>
-                    </tr>
-                    <tr>
-                        <td>2/18/2025 13:00:58</td>
-                        <td>Santosh</td>
-                        <td>8970399231</td>
-                        <td>Mid-day attendance - By 12:30 PM</td>
-                        <td><a href="https://drive.google.com/open?id=1u2-MCm299c4Ohm5z5mBRftAZJZ7ZqFlu" target="_blank">View Image</a></td>
-                    </tr>
-                    <tr>
-                        <td>2/18/2025 13:01:50</td>
-                        <td>Shweta Gowda</td>
-                        <td>8050154065</td>
-                        <td>Mid-day attendance - By 12:30 PM</td>
-                        <td><a href="https://drive.google.com/open?id=1lE3CSGcThz7xiBqvFfq9CGYI5iNTC90v" target="_blank">View Image</a></td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-    </div>
+
+<h1>Attendance Dashboard</h1>
+
+<!-- Summary Section -->
+<h2>Attendance Overview</h2>
+<p><strong>Total Attendance:</strong> <span id="totalAttendance"></span></p>
+<p><strong>Most Active User:</strong> <span id="mostActiveUser"></span></p>
+
+<div class="pie-chart-container">
+    <canvas id="attendanceChart"></canvas>
+</div>
+
+<!-- User Attendance Table -->
+<h2>User Attendance Details</h2>
+<table id="attendanceTable">
+    <thead>
+        <tr>
+            <th>Timestamp</th>
+            <th>Name</th>
+            <th>Phone Number</th>
+            <th>Check-In Type</th>
+            <th>GSP Camera Check-In Image</th>
+        </tr>
+    </thead>
+    <tbody id="attendanceBody">
+        <!-- Data rows will be inserted here dynamically -->
+    </tbody>
+</table>
+
+<script>
+// Sample Data
+const data = [
+    { timestamp: "2/17/2025 8:01:55", name: "Abhijna", phone: "8277276036", checkInType: "Log-in attendance - Before 7:30 AM", imageLink: "https://drive.google.com/open?id=1G-qy-hZeKqFU9igTX2H9Fbi2RrK2m9ed" },
+    { timestamp: "2/17/2025 8:16:00", name: "Santosh Bhandari", phone: "8970399231", checkInType: "Log-in attendance - Before 7:30 AM", imageLink: "https://drive.google.com/open?id=1kceZXG0CqzBSz_moxX1GzEXJNb9TIfVR" },
+    { timestamp: "2/17/2025 12:41:25", name: "Abhijna", phone: "8277276036", checkInType: "Mid-day attendance - By 12:30 PM", imageLink: "https://drive.google.com/open?id=1p1lL5XgMzYQCDqsMBpIGiHGuQ1hUVP54" },
+    { timestamp: "2/17/2025 15:28:22", name: "Abhijna", phone: "8277276036", checkInType: "Evening attendance - By 3:30 PM", imageLink: "https://drive.google.com/open?id=1xVjz0WtntBrvM5cqMUwQwCPTsklUFSqS" },
+    { timestamp: "2/17/2025 16:59:21", name: "Abhijna", phone: "8277276036", checkInType: "Log-out attendance - By 5:30 PM", imageLink: "https://drive.google.com/open?id=1ftxVzCStOz15o-hsajzbVPIpHZmV4aRh" },
+    { timestamp: "2/18/2025 7:47:34", name: "Abhijna", phone: "8277276036", checkInType: "Log-in attendance - Before 7:30 AM", imageLink: "https://drive.google.com/open?id=1AHagjNlFzhXYTYMh04G-GomUaKAQ7t6B" },
+    { timestamp: "2/18/2025 8:22:08", name: "Santosh Bhandari", phone: "8970399231", checkInType: "Log-in attendance - Before 7:30 AM", imageLink: "https://drive.google.com/open?id=1HBOwTotTvrmMMwKuJZTr9aJvNyzpx1Y4" },
+    { timestamp: "2/18/2025 12:59:29", name: "Abhijna", phone: "8277276036", checkInType: "Mid-day attendance - By 12:30 PM", imageLink: "https://drive.google.com/open?id=1MfuYJ4LlBradUydXeov7J3DBQ7Sztvx7" },
+    { timestamp: "2/18/2025 13:00:58", name: "Santosh", phone: "8970399231", checkInType: "Mid-day attendance - By 12:30 PM", imageLink: "https://drive.google.com/open?id=1u2-MCm299c4Ohm5z5mBRftAZJZ7ZqFlu" },
+    { timestamp: "2/18/2025 13:01:50", name: "Shweta Gowda", phone: "8050154065", checkInType: "Mid-day attendance - By 12:30 PM", imageLink: "https://drive.google.com/open?id=1lE3CSGcThz7xiBqvFfq9CGYI5iNTC90v" },
+];
+
+// Populate the table
+const tableBody = document.getElementById('attendanceBody');
+data.forEach(entry => {
+    const row = document.createElement('tr');
+    row.innerHTML = `
+        <td>${entry.timestamp}</td>
+        <td>${entry.name}</td>
+        <td>${entry.phone}</td>
+        <td>${entry.checkInType}</td>
+        <td><a href="${entry.imageLink}" target="_blank">View Image</a></td>
+    `;
+    tableBody.appendChild(row);
+});
+
+// Calculate Total Attendance and Most Active User
+document.getElementById('totalAttendance').innerText = data.length;
+
+const userAttendanceCount = {};
+data.forEach(entry => {
+    userAttendanceCount[entry.name] = (userAttendanceCount[entry.name] || 0) + 1;
+});
+
+const mostActiveUser = Object.keys(userAttendanceCount).reduce((a, b) => userAttendanceCount[a] > userAttendanceCount[b] ? a : b);
+document.getElementById('mostActiveUser').innerText = mostActiveUser;
+
+// Create Pie Chart for Attendance Types
+const attendanceData = {
+    labels: ['Log-in', 'Mid-day', 'Evening', 'Log-out'],
+    datasets: [{
+        label: 'Attendance Types',
+        data: [
+            data.filter(entry => entry.checkInType.includes('Log-in')).length,
+            data.filter(entry => entry.checkInType.includes('Mid-day')).length,
+            data.filter(entry => entry.checkInType.includes('Evening')).length,
+            data.filter(entry => entry.checkInType.includes('Log-out')).length
+        ],
+        backgroundColor: ['#ffcc00', '#00b0ff', '#ff4d4d', '#4dff88'],
+        hoverOffset: 4
+    }]
+};
+
+const ctx = document.getElementById('attendanceChart').getContext('2d');
+new Chart(ctx, {
+    type: 'pie',
+    data: attendanceData,
+});
+</script>
+
 </body>
 </html>
+
