@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Attendance Dashboard</title>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -28,9 +27,13 @@
         th {
             background-color: #f4f4f4;
         }
-        .pie-chart-container {
-            width: 50%;
-            margin: auto;
+        .filter-section {
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .filter-section select {
+            padding: 8px;
+            font-size: 14px;
         }
     </style>
 </head>
@@ -38,13 +41,13 @@
 
 <h1>Attendance Dashboard</h1>
 
-<!-- Summary Section -->
-<h2>Attendance Overview</h2>
-<p><strong>Total Attendance:</strong> <span id="totalAttendance"></span></p>
-<p><strong>Most Active User:</strong> <span id="mostActiveUser"></span></p>
-
-<div class="pie-chart-container">
-    <canvas id="attendanceChart"></canvas>
+<!-- Filter Section -->
+<div class="filter-section">
+    <label for="nameFilter">Filter by Name: </label>
+    <select id="nameFilter">
+        <option value="">All Users</option>
+        <!-- Dropdown options will be dynamically populated -->
+    </select>
 </div>
 
 <!-- User Attendance Table -->
@@ -52,8 +55,8 @@
 <table id="attendanceTable">
     <thead>
         <tr>
-            <th>Timestamp</th>
             <th>Name</th>
+            <th>Timestamp</th>
             <th>Phone Number</th>
             <th>Check-In Type</th>
             <th>GSP Camera Check-In Image</th>
@@ -83,55 +86,46 @@ const data = [
     { timestamp: "2/18/2025 8:22:08", name: "Santosh Bhandari", phone: "8970399231", checkInType: "Log-in attendance - Before 7:30 AM", imageLink: "https://drive.google.com/open?id=1HBOwTotTvrmMMwKuJZTr9aJvNyzpx1Y4" },
     { timestamp: "2/18/2025 12:59:29", name: "Abhijna", phone: "8277276036", checkInType: "Mid-day attendance - By 12:30 PM", imageLink: "https://drive.google.com/open?id=1MfuYJ4LlBradUydXeov7J3DBQ7Sztvx7" },
     { timestamp: "2/18/2025 13:00:58", name: "Santosh", phone: "8970399231", checkInType: "Mid-day attendance - By 12:30 PM", imageLink: "https://drive.google.com/open?id=1u2-MCm299c4Ohm5z5mBRftAZJZ7ZqFlu" },
-    { timestamp: "2/18/2025 13:01:50", name: "Shweta Gowda", phone: "8050154065", checkInType: "Mid-day attendance - By 12:30 PM", imageLink: "https://drive.google.com/open?id=1lE3CSGcThz7xiBqvFfq9CGYI5iNTC90v" },
+    { timestamp: "2/18/2025 13:01:50", name: "Shweta Gowda", phone: "8050154065", checkInType: "Mid-day attendance - By 12:30 PM", imageLink: "https://drive.google.com/open?id=1lE3CSGcThz7xiBqvFfq9CGYI5iNTC90v" }
 ];
 
-// Populate the table
+// Populate the Filter dropdown dynamically with unique names
+const nameFilter = document.getElementById('nameFilter');
+const uniqueNames = [...new Set(data.map(entry => entry.name))];
+
+uniqueNames.forEach(name => {
+    const option = document.createElement('option');
+    option.value = name;
+    option.innerText = name;
+    nameFilter.appendChild(option);
+});
+
+// Populate the table with data
 const tableBody = document.getElementById('attendanceBody');
-data.forEach(entry => {
-    const row = document.createElement('tr');
-    row.innerHTML = `
-        <td>${entry.timestamp}</td>
-        <td>${entry.name}</td>
-        <td>${entry.phone}</td>
-        <td>${entry.checkInType}</td>
-        <td><a href="${entry.imageLink}" target="_blank">View Image</a></td>
-    `;
-    tableBody.appendChild(row);
+function populateTable(filteredData) {
+    tableBody.innerHTML = "";
+    filteredData.forEach(entry => {
+        const row = document.createElement('tr');
+        row.innerHTML = `
+            <td>${entry.name}</td>
+            <td>${entry.timestamp}</td>
+            <td>${entry.phone}</td>
+            <td>${entry.checkInType}</td>
+            <td><a href="${entry.imageLink}" target="_blank">View Image</a></td>
+        `;
+        tableBody.appendChild(row);
+}
+
+// Initial population of the table with all data
+populateTable(data);
+
+// Filter the table based on the selected name
+nameFilter.addEventListener('change', (e) => {
+    const selectedName = e.target.value;
+    const filteredData = selectedName ? data.filter(entry => entry.name === selectedName) : data;
+    populateTable(filteredData);
 });
 
-// Calculate Total Attendance and Most Active User
-document.getElementById('totalAttendance').innerText = data.length;
-
-const userAttendanceCount = {};
-data.forEach(entry => {
-    userAttendanceCount[entry.name] = (userAttendanceCount[entry.name] || 0) + 1;
-});
-
-const mostActiveUser = Object.keys(userAttendanceCount).reduce((a, b) => userAttendanceCount[a] > userAttendanceCount[b] ? a : b);
-document.getElementById('mostActiveUser').innerText = mostActiveUser;
-
-// Create Pie Chart for Attendance Types
-const attendanceData = {
-    labels: ['Log-in', 'Mid-day', 'Evening', 'Log-out'],
-    datasets: [{
-        label: 'Attendance Types',
-        data: [
-            data.filter(entry => entry.checkInType.includes('Log-in')).length,
-            data.filter(entry => entry.checkInType.includes('Mid-day')).length,
-            data.filter(entry => entry.checkInType.includes('Evening')).length,
-            data.filter(entry => entry.checkInType.includes('Log-out')).length
-        ],
-        backgroundColor: ['#ffcc00', '#00b0ff', '#ff4d4d', '#4dff88'],
-        hoverOffset: 4
-    }]
-};
-
-const ctx = document.getElementById('attendanceChart').getContext('2d');
-new Chart(ctx, {
-    type: 'pie',
-    data: attendanceData,
-});
 </script>
 
 </body>
