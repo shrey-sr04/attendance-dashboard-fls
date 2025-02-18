@@ -12,6 +12,27 @@
         h1 {
             text-align: center;
         }
+        .container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo img {
+            width: 80px;
+            height: auto;
+        }
+        .count-section {
+            font-size: 16px;
+            font-weight: bold;
+        }
+        .filter-section {
+            margin-top: 20px;
+            text-align: center;
+        }
+        .filter-section select {
+            padding: 8px;
+            font-size: 14px;
+        }
         table {
             width: 100%;
             margin-top: 30px;
@@ -27,22 +48,19 @@
         th {
             background-color: #f4f4f4;
         }
-        .filter-section {
-            margin-bottom: 20px;
-            text-align: center;
-        }
-        .filter-section select {
-            padding: 8px;
-            font-size: 14px;
-        }
-        .count-section {
-            margin-top: 20px;
-            text-align: center;
-            font-size: 16px;
-        }
     </style>
 </head>
 <body>
+
+<!-- Top Section with Total Count and Logo -->
+<div class="container">
+    <div class="count-section" id="totalCount">
+        <!-- Count information will be displayed here -->
+    </div>
+    <div class="logo">
+        <img src="https://i.ibb.co/qYshy0qt/your-logo.png" alt="Company Logo">
+    </div>
+</div>
 
 <h1>Attendance Dashboard</h1>
 
@@ -71,11 +89,6 @@
         <!-- Data rows will be inserted here dynamically -->
     </tbody>
 </table>
-
-<!-- Total Count Section -->
-<div class="count-section" id="totalCount">
-    <!-- Count information will be displayed here -->
-</div>
 
 <script>
 // Sample Data
