@@ -35,6 +35,11 @@
             padding: 8px;
             font-size: 14px;
         }
+        .count-section {
+            margin-top: 20px;
+            text-align: center;
+            font-size: 16px;
+        }
     </style>
 </head>
 <body>
@@ -66,6 +71,11 @@
         <!-- Data rows will be inserted here dynamically -->
     </tbody>
 </table>
+
+<!-- Total Count Section -->
+<div class="count-section" id="totalCount">
+    <!-- Count information will be displayed here -->
+</div>
 
 <script>
 // Sample Data
@@ -102,6 +112,8 @@ uniqueNames.forEach(name => {
 
 // Populate the table with data
 const tableBody = document.getElementById('attendanceBody');
+const totalCountDiv = document.getElementById('totalCount');
+
 function populateTable(filteredData) {
     tableBody.innerHTML = "";
     filteredData.forEach(entry => {
@@ -114,6 +126,18 @@ function populateTable(filteredData) {
             <td><a href="${entry.imageLink}" target="_blank">View Image</a></td>
         `;
         tableBody.appendChild(row);
+    });
+
+    // Display the count of entries by name
+    const nameCounts = filteredData.reduce((counts, entry) => {
+        counts[entry.name] = (counts[entry.name] || 0) + 1;
+        return counts;
+    }, {});
+
+    totalCountDiv.innerHTML = "<strong>Total Entries by Name:</strong><br>";
+    for (let name in nameCounts) {
+        totalCountDiv.innerHTML += `${name}: ${nameCounts[name]} entries<br>`;
+    }
 }
 
 // Initial population of the table with all data
@@ -125,7 +149,6 @@ nameFilter.addEventListener('change', (e) => {
     const filteredData = selectedName ? data.filter(entry => entry.name === selectedName) : data;
     populateTable(filteredData);
 });
-
 </script>
 
 </body>
